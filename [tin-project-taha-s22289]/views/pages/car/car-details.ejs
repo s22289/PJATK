@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+        <meta name="author" content="FURKAN TAHA UNAL">
+	<title>RENT CAR</title>
+
+    <link rel="stylesheet" href="../../Css/Style.css" />
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
+<main>
+  <h2>Details of the Cars</h2>
+  
+
+        <form class="form">
+            
+	        <label for="model">Car Model:</label>
+            <input type="text" name="model" value="Audi: e-tron GT quattro" id="model" disabled />
+            <span id="errormodel" class="errors-text"></span>
+
+            <label for="year">Car_Year:</label>
+            <input type="date" name="year" value="2022-05-06" id="year" disabled />
+            <span id="erroryear" class="errors-date"></span>
+
+            <label for="colar">Car Colar:</label>
+            <input type="text" name="colar" value="Blue" id="colar" disabled />
+            <span id="errorcolar" class="errors-text"></span>
+
+            <label for="status">Car Status:</label>
+            <input type="text" name="status" value="New" id="status" disabled />
+            <span id="errorstatus" class="errors-text"></span>
+
+             <div>
+                <p><a class="list-actions-button-edit" href="Car-form-edit.html">Edit</a></p>
+            </div>
+        </form>
+	<h2> Details of rentals </h2>
+           <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Location</th>
+                    <th>Rent Date</th>
+                    <th>Return Date</th>
+                    <th>Car Price</th>
+                </tr>
+            </thead>
+
+  <tbody>
+                <tr>
+                    <td>Jim Carrey</td>
+                    <td>Warsawa</td>
+                    <td>2022-05-06</td>
+                    <td>2022-06-05</td>
+                    <td>500</td>
+                </tr>
+                <tr>
+ 		            <td>Ruby Rose</td>
+                    <td>Warsawa</td>
+                    <td>2022-07-02</td>
+                    <td>2022-09-001</td>
+                    <td>1500</td>
+                </tr>
+            </tbody>
+        </table>
+           <div>
+            <p><a class="list-actions-button-Back_page" href="car-list.html">Back to page</a></p>    
+        </div>
+</main>
+<%- include('../../fragments/footer.ejs') %>
+</body>
+</html>
+

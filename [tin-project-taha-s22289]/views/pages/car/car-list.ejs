@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+        <meta name="author" content="FURKAN TAHA UNAL">
+	<title>RENT CAR</title>
+
+    <link rel="stylesheet" href="../../Css/Style.css" />
+</head>
+<body>
+	
+    <%- include('../../fragments/header.ejs') %>
+    
+<main>
+        <h2>List of Cars</h2>
+        
+        <table class="table-list">
+            
+            <thead>
+                <tr>
+                    <th>Car Model</th>
+                    <th>Car Year</th>
+                    <th>Car Colar</th>
+                    <th>Car Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <% for (let car of cars) { %>
+                    <tr>
+                        <td><%= car.model %></td>
+                        <td><%= car.year %></td>
+                        <td><%= car.colar %></td>
+                        <td><%= car.status %></td>
+
+                        <td>
+                            <ul class="list-actions">
+                                <li><a href="/car/details/<%=car._id%>" class="list-actions-button-details">Details</a></li>
+                                <li><a href="/car/edit/<%=car._id%>" class="list-actions-button-edit">Edit</a></li>
+                                <li><a href="/car/delete/<%=car._id%>" class="list-actions-button-delete">Delete</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+            
+        </table>
+        
+        <p><a href="car/add" class="button-add">Add a new Car</a></p>
+        
+    </main>
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+</html>
+

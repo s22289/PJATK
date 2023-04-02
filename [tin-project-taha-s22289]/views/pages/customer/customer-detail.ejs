@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+        <meta name="author" content="FURKAN TAHA UNAL">
+	<title>RENT CAR</title>
+
+    <link rel="stylesheet" href="../../Css/Style.css" />
+</head>
+<body>
+ 
+<main>
+  <h2>Customer detail</h2>
+  
+  <form class="form">
+  <label for="firstname">Name:</label>
+  <input type="text" name="firstName" value="jim" id="firstname" disabled/>
+  <span id="errorfirstName"></span>
+
+  <label for="surname">Surname:</label>
+  <input type="text" name="surname" value="Carrey" id="surname" disabled/>
+  <span id="errorsurname"></span>
+
+  <label for="address">Address:</label>
+  <input type="text" name="address" value="ul.tatranska 5" id="address" disabled/>
+  <span id="erroraddress"></span>
+  
+  <label for="age">Age:</label>
+  <input type="text" name="age" value="42" id="age" disabled/>
+  <span id="errorage"></span>
+
+  
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" value="Carreyjim@gmail.com" disabled/>
+  <span id="erroremail"></span>
+
+  <label for="number">Phone-Number:</label>
+  <input type="text" name="number" value="+48-123-456-789" id="number" disabled/>
+  <span id="errornumber"></span>
+
+
+  <div>
+
+      <p><a class="list-actions-button-edit" href="form-edit.html">Edit</a></p>
+  </div>
+</form>
+
+<h2>Rental details</h2>
+
+<table class="table-list">
+  <thead>
+    <tr>
+      <th>Car Model</th>
+      <th>Location</th>
+      <th>Rent Date</th>
+      <th>Return Date</th>
+      <th>Car Price</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+        <td>Audi: e-tron GT quattro</td>
+        <td>Warsawa</td>
+        <td>2022-05-06</td>
+        <td>2022-06-05</td>
+        <td>500</td>
+    </tr>
+    <tr>
+      <td>BMW: BMW SERII 8</td>
+      <td>Warsawa</td>
+      <td>2022-08-01</td>
+      <td>2022-12-02</td>
+      <td>1700</td>
+    </tr>
+  </tbody>
+
+</table>
+
+<div>
+  <p><a class="list-actions-button-Back_page" href="customer-list.html">Back to page</a></p>    
+</div>
+</main>
+
+</body>
+</html>
+

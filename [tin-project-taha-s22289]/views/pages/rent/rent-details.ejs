@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+        <meta name="author" content="FURKAN TAHA UNAL">
+	<title>RENT CAR</title>
+
+    <link rel="stylesheet" href="../../Css/Style.css" />
+</head>
+<body>
+  <%- include('../../fragments/header.ejs') %>
+<main>
+  <h2>Details of rentals</h2>
+  
+
+        <form class="form">
+            <label for="customer">Customer:</label>
+            <input type="text" name="customer" value="Jim Carrey" id="customer" disabled />   
+            <span id="errorcustomer" class="errors-text"></span>     
+         
+            <label for="car">Car:</label>
+            <input type="text" name="car" value="Audi: e-tron GT quattro" id="car" disabled />
+            <span id="errorCar" class="errors-text"></span>
+          
+            <label for="location">Location:</label>
+            <input type="text" name="location" value="Plocka4/40" id="location" disabled />
+            <span id="errorlocation" class="errors-text"></span>
+           
+            <label for="rentdate">Rent Date:</label>
+            <input type="date" name="rentdate" value="2022-05-06" id="rentdate" disabled />
+            <span id="errorRentdate" class="errors-date"></span>
+            
+            <label for="returndate">Return Date:</label>
+            <input type="date" name="returndate" value="2022-06-05" id="returndate" disabled />
+            <span id="errorretundate" class="errors-date"></span>
+           
+  	        <label for="price">Car Price:</label>
+            <input type="number" name="price" value="500" disabled />
+            <span id="errorprice" class="errors-number"></span>
+           
+  	    <p><a class="list-actions-button-edit" href="rent-form-edit.html">Edit</a></p>
+            <p><a class="list-actions-button-Back_page" href="rent-list.html">Back to page</a></p>    
+          </form>  
+</main>
+<%- include('../../fragments/footer.ejs') %>
+</body>
+</html>
+

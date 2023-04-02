@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+        <meta name="author" content="FURKAN TAHA UNAL">
+	<title>RENT CAR</title>
+
+  
+</head>
+<body>
+  <%- include('../../fragments/header.ejs') %>
+  <main>
+  <link rel="stylesheet" href="../../Css/Style.css" />
+
+  <script type="application/javascript" src="../../../public/js/validationCommon.js"></script>
+  <script type="application/javascript" src="../../../public/js/validationCarsForm.js"></script>
+  
+  <h2><%= pageTitle %></h2>
+        
+  <form class="form" method="post" action="<%=formAction%>" novalidate  >
+                  
+    <input type="hidden" name="_id" value="<%= car._id %>">
+
+	       <label for="model">Car Model :<abbr title="required" ></abbr></label>
+            <input type="text"  name="model" id="model" placeholder="np:Audi: e-tron GT quattro" value="<%= car.model %>" 
+            class="<%= validationErrors.find(e=>e.path.includes('model')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+     <span id="errormodel" class="errors-text">
+         <% if (validationErrors.find(e=> e.path.includes('model'))) { %>
+             <%= validationErrors.find(e=> e.path.includes('model')).message %>
+         <% } %>
+     </span>
+
+            <label for="year">Car Year :<abbr title="required" aria-label="required"></abbr></label>
+            <input type="date"  name="year" id="year" value="<%= car.year %>" 
+            class="<%= validationErrors.find(e=>e.path.includes('year')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+          <span id="erroryear" class="errors-date">
+          <% if (validationErrors.find(e=> e.path.includes('year'))) { %>
+             <%= validationErrors.find(e=> e.path.includes('year')).message %>
+          <% } %>
+          </span>
+            
+          
+            <label for="colar">Car Colar :</label>
+            <input type="text"  name="colar" id="colar" placeholder="np:Blue or Black" value="<%= car.colar %>"
+            class="<%= validationErrors.find(e=>e.path.includes('colar')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+          <span id="errorcolar" class="errors-text">
+            <% if (validationErrors.find(e=> e.path.includes('colar'))) { %>
+                <%= validationErrors.find(e=> e.path.includes('colar')).message %>
+            <% } %>
+          </span>
+ 
+            <label for="status">Car Status :</label>
+            <input type="text" name="status" id="status" placeholder="np:New or Clean"value="<%= car.status %>" 
+            class="<%= validationErrors.find(e=>e.path.includes('status')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled' : '' %>/>
+          <span id="errorstatus" class="errors-text">
+          <% if (validationErrors.find(e=> e.path.includes('status'))) { %>
+             <%= validationErrors.find(e=> e.path.includes('status')).message %>
+          <% } %>
+          </span>
+          
+          <% if (formMode == 'showDetails') { %>
+            <div>
+                <a class="list-actions-button-edit" href="/car/edit/<%= car._id %>">Edit</a>
+            </div>
+          <% } %>
+
+          <div>
+            <p id="errorsSummary" class="errors-text"></p>
+          
+            <% if (formMode != 'showDetails') { %>
+                <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                <a class="form-button-cancel" href="/car">cancel</a>
+            <% } else { %>
+                <a class="form-button-cancel" href="/car">Return</a>
+            <% } %>
+          </div>
+
+           
+
+</form>
+ 
+<% if (formMode == 'showDetails' || formMode == 'edit') { %>
+
+  <h2>car's Customer detail </h2>
+  <table class="table-list">
+  <tr>
+    <th>Customer</th>
+    <th>Location</th>
+    <th>Rent Date</th>
+    <th>Return Date</th>
+    <th>Car Price</th>
+  </tr>
+</thead>
+<tbody>
+  <% for (let c of car.rents) { %>
+      <tr>
+          <td><a href="/customer/customer-detail/<%= c.customer._id %>"><%= c.customer.firstname %> </a></td>
+          
+          <td><%= c.location %></td>
+          <td><%= c.rentdate.toISOString().split('T')[0] %></td>
+          <td><%= c.returndate ? c.returndate.toISOString().split('T')[0] : '' %></td>
+          <td><%= c.price %></td>
+      </tr>
+  <% } %>
+</tbody>
+
+</table>
+
+<% } %>
+
+</main>
+<%- include('../../fragments/footer.ejs') %>
+</body>
+</html>
+

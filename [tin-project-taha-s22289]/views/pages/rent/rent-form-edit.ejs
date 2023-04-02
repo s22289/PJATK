@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+        <meta name="author" content="FURKAN TAHA UNAL">
+	<title>RENT CAR</title>
+
+    <link rel="stylesheet" href="../../Css/Style.css" />
+</head>
+<body>
+	<%- include('../../fragments/header.ejs') %>
+<main>
+  <h2>Edit A Rent</h2>
+
+
+        <form id="rent-form-edit" class="form">
+            
+            <label for="customer">Customer:<abbr title="required" aria-label="required"></abbr></label>
+            <select name="customers" id="customer" form="Rent-form-edit">
+                <option value="Jim Carrey">Jim Carrey</option>
+                <option value="Rube rose">Rube rose</option>
+            </select>
+            <span id="errorcustomer" class="errors-text"></span>   
+           
+            
+            <label for="car">Car:<abbr title="required" aria-label="required"></abbr></label>
+            <select name="car" id="car" form="Rent-form-edit">
+                 <option value="Audi: e-tron GT quattro">Audi: e-tron GT quattro</option>
+                <option value="BMW: BMW SERII 8">BMW: BMW SERII 8</option>
+            </select>
+            <span id="errorcar" class="errors-text"></span>
+            
+            
+
+            <label for="location">Location:</label>
+            <input type="text" name="location" value="Plocka4/40" id="location" />
+            <span id="errorlocation" class="errors-text"></span>
+            
+            <label for="rentdate">Rent Date:</label>
+            <input type="date" name="rentdate" value="2022-05-06" id="rentdate"/>
+            <span id="errorrentdate" class="errors-date"></span>
+
+            <label for="returndate">Return date:</label>
+            <input type="date" name="returndate" value="2022-06-05" id="returndate" />
+            <span id="errorretundate" class="errors-date"></span>
+
+            <label for="price">Car Price:</label>
+            <input type="number" name="price" value="500" id="price" />
+            <span id="errorprice" class="errors-number"></span>
+            
+            <div>
+              <input class="form-button-submit" type="submit" value="Add" />
+              <a class="form-button-cancel" href="rent-list.html">Cancel</a>  
+            </div>
+        </form>
+</main>
+<%- include('../../fragments/footer.ejs') %>
+</body>
+</html>

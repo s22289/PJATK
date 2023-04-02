@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+        <meta name="author" content="FURKAN TAHA UNAL">
+	<title>RENT CAR</title>
+
+    <link rel="stylesheet" href="../../Css/Style.css" />
+</head>
+<body>
+    
+    <%- include('../../fragments/header.ejs') %>
+    <main>
+    <script type="application/javascript" src="../../../public/js/validationCommon.js"></script>
+  <script type="application/javascript" src="../../../public/js/validationRentForm.js"></script>
+
+  <h2><%= pageTitle %></h2>   
+        
+  <form class="form" method="post" action="<%=formAction%>" novalidate ></form>
+  <input type="hidden" name="_id" value="<%= rent._id %>">
+
+      <label for="customer">customer: *</label>
+      <select id="customer" name="customer" required class="<%= validationErrors.find(e=>e.path.includes('customer')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled' : ''%> >
+      
+          <% if (formMode !='edit' ){ %>
+            <option value="" selected="selected">--Choose a customer--</option>
+            <% } %>
+          
+
+          <% for (let i=0; i<allCustomers.length; i++) {let customer =allCustomers[i]; %>
+              <option value="<%= customer._id %>" label="<%= customer.Firstname + ' ' + customer.surname %>"
+                  <%=(rent._id && customer._id.toString()==rent.customer._id.toString()) ? 'selected' : ''%>>
+              </option>
+          <% } %>
+        </select>
+        <span id="errorcustomer" class="errors-text">
+            <% if (validationErrors.find(e=> e.path.includes('errorcustomer'))) { %>
+                <%= validationErrors.find(e=> e.path.includes('errorcustomer')).message %>
+            <% } %>
+        </span>
+     
+
+
+
+
+
+     <!-- doctor dropdown field -->
+     <label for="car">car:*</label>
+     <select id="car" name="car" required class="<%=validationErrors.find(e=>e.path.includes('car')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled': '' %> >
+         <% if (formMode !='edit' ){ %>
+             <option value="" selected="selected">--Choose a car--</option>
+         <% } %>
+
+         <%for (let i=0; i<allCars.length; i++) {let car=allCars[i]; %>
+             <option value="<%= car._id %>" label="<%= car.firstname%>"
+                 <%=(rent._id && car._id.toString()==rent.car._id.toString()) ? 'selected' : '' %>></option>
+         <% } %>
+         
+     </select>
+     <span id="errorcar" class="errors-text">
+         <% if (validationErrors.find(e=> e.path.includes('car'))) { %>
+             <%= validationErrors.find(e=> e.path.includes('car')).message %>
+         <% } %>
+     </span>
+
+
+
+  <label for="location">location: *</label>
+  <input type="text" name="location" id="location" placeholder="np: plocka" value="<%= rent.location %>" class="<%= validationErrors.find(e=>e.path.includes('surgeryName')) ? 'error-input' : '' %>"
+  <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+<span id="errorlocation" class="errors-text">
+  <% if (validationErrors.find(e=> e.path.includes('location'))) { %>
+      <%= validationErrors.find(e=> e.path.includes('location')).message %>
+  <% } %>
+</span>
+
+
+
+
+<label for="rentdate">rentdate: *</label>
+<input type="date" name="rentdate" id="rentdate" placeholder="np:30" value="<%= rent.rentdate %>" class="<%= validationErrors.find(e=>e.path.includes('cost')) ? 'error-input' : '' %>"
+<%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+<span id="errorrentdate" class="errors-text">
+<% if (validationErrors.find(e=> e.path.includes('rentdate'))) { %>
+    <%= validationErrors.find(e=> e.path.includes('rentdate')).message %>
+<% } %>
+
+<label for="returndate">returndate: *</label>
+<input type="date" name="returndate" id="returndate" placeholder="np:30" value="<%= rent.returndate %>" class="<%= validationErrors.find(e=>e.path.includes('cost')) ? 'error-input' : '' %>"
+<%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+<span id="errorreturndate" class="errors-text">
+<% if (validationErrors.find(e=> e.path.includes('returndate'))) { %>
+    <%= validationErrors.find(e=> e.path.includes('returndate')).message %>
+<% } %>
+
+
+<label for="price">price: *</label>
+<input type="text" name="price" id="price" placeholder="np:30" value="<%= rent.price %>" class="<%= validationErrors.find(e=>e.path.includes('cost')) ? 'error-input' : '' %>"
+<%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+<span id="errorprice" class="errors-text">
+<% if (validationErrors.find(e=> e.path.includes('price'))) { %>
+    <%= validationErrors.find(e=> e.path.includes('price')).message %>
+<% } %>
+
+ <!-- BUTTONS -->
+ <% if (formMode == 'showDetails') { %>
+    <div>
+        <a class="list-actions-button-edit" href="/rent/edit/<%= rent._id %>">Edit</a>
+    </div>
+    
+<% } %>
+
+  <div>
+    <p id="errorsSummary" class="errors-text"></p>
+
+    <% if (formMode != 'showDetails') { %>
+        <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+        <a class="form-button-cancel" href="/rent">Cancel</a>
+    <% } else { %>
+        <a class="form-button-cancel" href="/rent">Return</a>
+    <% } %>   
+</form>
+ 
+</main>
+<%- include('../../fragments/footer.ejs') %>
+</body>
+</html>
+
